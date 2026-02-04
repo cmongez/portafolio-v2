@@ -43,16 +43,16 @@ export function ExperienceTimeline() {
                   >
                     {item.company}
                   </span>
-                  <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest whitespace-nowrap">
+                  <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest whitespace-nowrap">
                     {item.period}
                   </span>
                 </div>
               </div>
 
-              <ul className="space-y-2 mt-2">
+              <ul className="space-y-3 mt-3">
                 {item.highlight.map((point, i) => (
-                  <li key={i} className="text-sm text-neutral-400 leading-relaxed max-w-2xl flex items-start gap-2">
-                    <span className="mt-2 w-2 h-[1px] bg-neutral-600 shrink-0" />
+                  <li key={i} className="text-sm text-neutral-300 leading-loose max-w-2xl flex items-start gap-3">
+                    <span className="mt-2 w-2 h-[1px] bg-neutral-500 shrink-0" />
                     <span>{point}</span>
                   </li>
                 ))}
@@ -93,8 +93,8 @@ export function ExperienceTimeline() {
                   )}
                 </div>
                 <div className="flex justify-between items-center text-xs">
-                  <span className="text-neutral-400">{edu.institution}</span>
-                  <span className="text-neutral-500 font-mono bg-neutral-900/50 px-2 py-0.5 rounded border border-neutral-800">{edu.year}</span>
+                  <span className="text-neutral-300">{edu.institution}</span>
+                  <span className="text-neutral-400 font-mono bg-neutral-900/50 px-2 py-0.5 rounded border border-neutral-800">{edu.year}</span>
                 </div>
               </li>
             ))}
@@ -112,8 +112,8 @@ export function ExperienceTimeline() {
               <li key={idx} className="flex flex-col border border-neutral-800/50 bg-neutral-900/30 rounded-lg p-3 hover:border-neutral-700 transition-colors">
                 <span className="text-neutral-300 font-medium text-sm mb-1">{cert.title}</span>
                 <div className="flex justify-between items-center text-xs">
-                  <span className="text-neutral-500">{cert.institution}</span>
-                  <span className="text-neutral-600 font-mono">{cert.year}</span>
+                  <span className="text-neutral-400">{cert.institution}</span>
+                  <span className="text-neutral-400 font-mono">{cert.year}</span>
                 </div>
               </li>
             ))}

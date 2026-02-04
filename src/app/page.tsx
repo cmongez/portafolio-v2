@@ -201,12 +201,12 @@ export default async function Home() {
             <div className="grid md:grid-cols-2 gap-8 h-full items-center">
               <div className="flex flex-col justify-between h-full py-2">
                 <div>
-                  <p className="text-base text-neutral-400 leading-relaxed">
+                  <p className="text-base text-neutral-300 leading-loose">
                     {nviroProject.description}
                   </p>
                   {nviroProject.impact && (
-                    <div className="mt-6 border-l-2 border-blue-500/30 pl-4">
-                      <p className="text-sm text-neutral-400 font-medium leading-relaxed">
+                    <div className="mt-8 border-l-2 border-blue-500/30 pl-4">
+                      <p className="text-sm text-neutral-300 font-medium leading-loose">
                         {nviroProject.impact}
                       </p>
                     </div>
@@ -246,12 +246,12 @@ export default async function Home() {
             <div className="grid md:grid-cols-2 gap-8 h-full items-center">
               <div className="flex flex-col justify-between h-full py-2">
                 <div>
-                  <p className="text-base text-neutral-400 leading-relaxed">
+                  <p className="text-base text-neutral-300 leading-loose">
                     {agrosuperProject.description}
                   </p>
                   {agrosuperProject.impact && (
-                    <div className="mt-6 border-l-2 border-amber-500/30 pl-4">
-                      <p className="text-sm text-neutral-400 font-medium leading-relaxed">
+                    <div className="mt-8 border-l-2 border-amber-500/30 pl-4">
+                      <p className="text-sm text-neutral-300 font-medium leading-loose">
                         {agrosuperProject.impact}
                       </p>
                     </div>
