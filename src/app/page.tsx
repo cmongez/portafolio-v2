@@ -128,7 +128,7 @@ export default async function Home() {
                 <Link
                   href={socials.find(s => s.id === "linkedin")?.href || "#"}
                   target="_blank"
-                  className="px-6 py-2.5 rounded-md bg-neutral-100 text-neutral-900 font-semibold text-sm hover:bg-white transition-colors flex items-center gap-2 shadow-lg shadow-white/5"
+                  className="px-6 py-2.5 rounded-md bg-[#0A66C2] text-white font-semibold text-sm hover:bg-[#004182] transition-colors flex items-center gap-2 shadow-lg shadow-blue-900/20"
                 >
                   <socialIconMap.linkedin className="w-4 h-4" />
                   LinkedIn
@@ -143,15 +143,20 @@ export default async function Home() {
                   GitHub
                 </Link>
 
-                {/* Download CV (Accent) */}
                 <Link
-                  href="/001_CV_Cesar_Mongez_Desarrollador_Full_Stack"
+                  href="/001_CV_Cesar_Mongez_Desarrollador_Full_Stack.pdf"
                   target="_blank"
-                  download
+                  className="px-6 py-2.5 rounded-md border border-amber-600 text-amber-500 font-semibold text-sm hover:bg-amber-600 hover:text-white transition-colors flex items-center gap-2"
+                >
+                  Ver CV
+                </Link>
+
+                <Link
+                  href="/001_CV_Cesar_Mongez_Desarrollador_Full_Stack.pdf"
+                  download="001_CV_Cesar_Mongez_Desarrollador_Full_Stack.pdf"
                   className="px-6 py-2.5 rounded-md bg-amber-600 text-white font-semibold text-sm hover:bg-amber-500 transition-colors flex items-center gap-2 shadow-lg shadow-amber-900/20"
                 >
-                  <span className="text-lg leading-none">📄</span>
-                  CV
+                  Descargar CV
                 </Link>
 
                 <div className="hidden lg:flex items-center gap-2 px-3 py-1 ml-2 rounded-full bg-amber-500/10 border border-amber-500/20">
@@ -210,21 +215,17 @@ export default async function Home() {
                 <TechChips items={nviroProject.stack} className="mt-8" />
               </div>
 
-              <div className="hidden md:flex items-center justify-center p-4 perspective-1000">
-                <div
-                  className="relative w-full aspect-video rounded-lg border border-neutral-800/80 bg-neutral-900/80 overflow-hidden shadow-2xl transition-transform duration-500"
-                  style={{ transform: "rotateX(12deg) rotateY(-6deg) rotateZ(2deg)" }}
-                >
+              <div className="hidden md:flex items-center justify-center p-4">
+                <div className="relative w-full aspect-video rounded-lg border border-neutral-800/80 bg-neutral-900/80 overflow-hidden shadow-2xl">
                   <Image
-                    src="https://placehold.co/800x600/0f172a/3b82f6?text=NVIRO+GIS+System"
-                    alt="NVIRO Interface"
+                    src="/img/nviro.png"
+                    alt="NVIRO GIS System Interface"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    style={{ maskImage: "linear-gradient(to bottom, black 50%, transparent 100%)" }}
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/60 via-transparent to-transparent" />
                 </div>
               </div>
             </div>
@@ -259,20 +260,16 @@ export default async function Home() {
                 <TechChips items={agrosuperProject.stack} className="mt-8" />
               </div>
 
-              <div className="hidden md:flex items-center justify-center p-4 perspective-1000">
-                <div
-                  className="relative w-full aspect-video rounded-lg border border-neutral-800/80 bg-neutral-900/80 overflow-hidden shadow-2xl transition-transform duration-500"
-                  style={{ transform: "rotateX(12deg) rotateY(-6deg) rotateZ(2deg)" }}
-                >
+              <div className="hidden md:flex items-center justify-center p-4">
+                <div className="relative w-full aspect-video rounded-lg border border-neutral-800/80 bg-neutral-900/80 overflow-hidden shadow-2xl">
                   <Image
-                    src="https://placehold.co/800x600/1c1917/f59e0b?text=Agrosuper+Finance"
-                    alt="Agrosuper Interface"
+                    src="/img/agrosuper.jpeg"
+                    alt="Agrosuper Finance Interface"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    style={{ maskImage: "linear-gradient(to bottom, black 50%, transparent 100%)" }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/60 via-transparent to-transparent" />
                 </div>
               </div>
             </div>

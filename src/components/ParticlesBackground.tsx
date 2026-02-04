@@ -17,8 +17,8 @@ export function ParticlesBackground() {
 
     // Nodes config
     const nodeCount = 70; // Increased count
-    const connectionDistance = 150; 
-    const mouseDistance = 200; 
+    const connectionDistance = 150;
+    const mouseDistance = 200;
 
     // Define Node type locally
     type Node = {
@@ -74,8 +74,8 @@ export function ParticlesBackground() {
 
         // Draw node
         ctx.beginPath();
-        ctx.arc(node.x, node.y, 1.8, 0, Math.PI * 2); // Larger dots
-        ctx.fillStyle = "rgba(255, 255, 255, 0.7)"; // Brighter dots
+        ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(255, 255, 255, 0.84)";
         ctx.fill();
 
         // Connect to other nodes
@@ -86,10 +86,9 @@ export function ParticlesBackground() {
 
           if (dist < connectionDistance) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(255, 255, 255, ${
-              0.25 * (1 - dist / connectionDistance) // Brighter lines
-            })`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = `rgba(255, 255, 255, ${0.3 * (1 - dist / connectionDistance)
+              })`;
+            ctx.lineWidth = 0.6;
             ctx.moveTo(node.x, node.y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
             ctx.stroke();
@@ -103,10 +102,9 @@ export function ParticlesBackground() {
 
         if (dist < mouseDistance) {
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(255, 255, 255, ${
-            0.4 * (1 - dist / mouseDistance) // Brighter mouse lines
-          })`;
-          ctx.lineWidth = 0.6;
+          ctx.strokeStyle = `rgba(255, 255, 255, ${0.48 * (1 - dist / mouseDistance)
+            })`;
+          ctx.lineWidth = 0.8;
           ctx.moveTo(node.x, node.y);
           ctx.lineTo(mouse.x, mouse.y);
           ctx.stroke();

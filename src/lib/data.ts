@@ -76,7 +76,7 @@ export const projects: Project[] = [
     id: "nviro",
     name: "NVIRO — Sistema de Gestión Geoespacial",
     description:
-      "Arquitectura integral para la gestión y visualización de datos ambientales. Implementación de pipelines de datos espaciales (PostGIS), servicios de mapas interactivos y aplicaciones móviles offline-first para captura de datos en terreno.",
+      "Arquitectura GIS completa integrando PostgreSQL/PostGIS, mapas interactivos (Mapbox/Leaflet) y visualización satelital (GeoTIFF). Desarrollo de aplicaciones móviles offline-first en React Native para captura de datos ambientales en terreno. Backend en Node.js/Express para gestión de formularios normativos y procesamiento de geometrías.",
     stack: [
       "React",
       "React Native",
@@ -97,9 +97,9 @@ export const projects: Project[] = [
   },
   {
     id: "agrosuper",
-    name: "Agrosuper — Suite de Gestión Corporativa",
+    name: "Agrosuper — Suite de Inteligencia Financiera & Dashboard Corporativo",
     description:
-      "Éxito del proyecto base permitió la replicación y escalado de la arquitectura hacia filiales del holding como AquaChile. Gestión de datos financieros centralizados con APIs en Python (FastAPI) y SQL Server.",
+      "Construcción de un Dashboard integral con React para la visualización dinámica de indicadores. El sistema centraliza datos mediante APIs en Python y SQL Server, transformándolos en reportes de gestión interactivos y auditorías claras en tiempo real.",
     stack: [
       "Python",
       "FastAPI",
@@ -111,7 +111,7 @@ export const projects: Project[] = [
       "Azure",
     ],
     impact:
-      "Reducción >100% en tiempo de toma de decisiones; volumen de datos financieros centralizado y accesible de forma segura.",
+      "Debido al éxito y precisión del sistema, se solicitó la replicación de un sistema similar para otras filiales del holding. Optimizó drásticamente la toma de decisiones gerenciales mediante la disponibilidad inmediata de métricas de rentabilidad.",
     isFeatured: true,
   },
   {
@@ -264,9 +264,9 @@ export const certifications: EducationItem[] = [
     year: "2026",
   },
   {
-    institution: "SCRUMstudy",
-    title: "Scrum Fundamentals Certified (SFC™)",
-    year: "2023",
+    institution: "Capacitación Usach",
+    title: "Fundamentos de SGSI - Normas ISO 27001",
+    year: "2024",
   },
   {
     institution: "AWS Academy",
@@ -286,6 +286,11 @@ export const certifications: EducationItem[] = [
   {
     institution: "Cisco",
     title: "Python Essentials 1",
+    year: "2023",
+  },
+  {
+    institution: "SCRUMstudy",
+    title: "Scrum Fundamentals Certified (SFC™)",
     year: "2023",
   },
   {
