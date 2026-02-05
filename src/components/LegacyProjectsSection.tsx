@@ -28,7 +28,7 @@ export function LegacyProjectsSection({
       <button
         type="button"
         onClick={() => setIsOpen((v) => !v)}
-        className="group flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl border border-neutral-800 bg-neutral-900/40 hover:bg-neutral-900/70 hover:border-neutral-700 transition-all duration-300 text-neutral-400 hover:text-neutral-300 text-sm font-medium tracking-tight"
+        className="group flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl border border-neutral-800 bg-neutral-900/40 hover:bg-neutral-900/70 hover:border-neutral-700 transition-all duration-300 text-neutral-300 hover:text-neutral-200 text-sm font-medium tracking-tight"
         aria-expanded={isOpen}
       >
         <Archive className="size-4 shrink-0 opacity-70 group-hover:opacity-100" />
@@ -37,7 +37,7 @@ export function LegacyProjectsSection({
 
       {isOpen && (
         <div className="md:col-span-3 space-y-3 transition-opacity duration-300">
-          <h3 className="text-xs font-medium text-neutral-400 uppercase tracking-wider">
+          <h3 className="text-xs font-medium text-neutral-300 uppercase tracking-wider">
             {LEGACY_LEARNING_CATEGORY}
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -61,7 +61,7 @@ export function LegacyProjectsSection({
                     <div className="absolute inset-0 bg-neutral-950/20 group-hover/img:bg-transparent transition-colors duration-300" />
                   </div>
                 )}
-                <p className="text-neutral-300 text-xs leading-relaxed line-clamp-3 mb-3">
+                <p className="text-neutral-300 text-xs leading-relaxed line-clamp-3 mb-4">
                   {p.description}
                 </p>
                 <TechChips items={p.stack.slice(0, 4)} className="mb-4" /> {/* Limit visible tags */}
@@ -71,7 +71,7 @@ export function LegacyProjectsSection({
                       href={p.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[11px] text-neutral-400 hover:text-neutral-200 transition-colors"
+                      className="inline-flex items-center gap-1 text-[11px] text-neutral-300 hover:text-neutral-100 transition-colors"
                     >
                       <ExternalLink className="size-3" />
                       Demo
@@ -82,7 +82,7 @@ export function LegacyProjectsSection({
                       href={p.repository}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[11px] text-neutral-400 hover:text-neutral-200 transition-colors"
+                      className="inline-flex items-center gap-1 text-[11px] text-neutral-300 hover:text-neutral-100 transition-colors"
                     >
                       <Code className="size-3" />
                       Repo

@@ -10,9 +10,10 @@ export function TechChip({ children, className }: TechChipProps) {
     <span
       className={cn(
         "inline-flex items-center px-3 py-1 text-xs font-medium tracking-wide",
-        "rounded-md border border-neutral-800 bg-neutral-900/50 text-neutral-400",
-        "transition-colors duration-300 hover:border-neutral-600 hover:text-neutral-200",
+        "rounded-full border border-neutral-700/60 bg-neutral-800/50 text-neutral-300",
+        "transition-all duration-300 hover:border-neutral-600 hover:text-neutral-100 hover:bg-neutral-800/80",
         "shrink-0 cursor-default select-none",
+        "shadow-sm hover:shadow-md hover:shadow-neutral-900/50",
         className
       )}
     >
@@ -28,7 +29,7 @@ interface TechChipsProps {
 
 export function TechChips({ items, className }: TechChipsProps) {
   return (
-    <div className={cn("flex flex-wrap gap-1.5", className)}>
+    <div className={cn("flex flex-wrap gap-2", className)}>
       {items.map((item) => (
         <TechChip key={item}>{item}</TechChip>
       ))}

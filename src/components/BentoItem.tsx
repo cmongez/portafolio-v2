@@ -57,7 +57,7 @@ export function BentoItem({
 }: BentoItemProps & { isFeatured?: boolean; contentClassName?: string }) {
   const Icon = iconName ? bentoIconMap[iconName] : undefined;
   const accent = headerAccentClassName ?? "text-neutral-400";
-  
+
   // Mouse tracking for Glow Effect
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -72,13 +72,13 @@ export function BentoItem({
     offset: ["0 1", "1.2 1"], // Reveal when enter viewport
   });
   const opacity = useTransform(scrollYProgress, [0, 1], [0.6, 1]); // Simple fade in? Or use whileInView
-  
+
   // We want a "reveal on scroll" with slight upward movement
   // Using Variants is cleaner for "whileInView"
   const revealVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.6, ease: "easeOut" }
     }
@@ -93,11 +93,11 @@ export function BentoItem({
     const { width, height, left, top } = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - left;
     const y = e.clientY - top;
-    
+
     // Calculate percentage from center (-0.5 to 0.5)
-    const xP = (x / width) - 0.5; 
+    const xP = (x / width) - 0.5;
     const yP = (y / height) - 0.5;
-    
+
     xPct.set(xP);
     yPct.set(yP);
 
@@ -108,17 +108,17 @@ export function BentoItem({
     if (!isFeatured) return;
     xPct.set(0);
     yPct.set(0);
-    mouseX.set(0); 
+    mouseX.set(0);
   }
 
   // Linear Style: Stronger tilt
-  const rotateX = useTransform(yPct, [-0.5, 0.5], [8, -8]); 
+  const rotateX = useTransform(yPct, [-0.5, 0.5], [8, -8]);
   const rotateY = useTransform(xPct, [-0.5, 0.5], [-8, 8]);
-  
+
   // Determine glow color based on accent class
   const isBlue = headerAccentClassName?.includes("blue");
   const isAmber = headerAccentClassName?.includes("amber"); // Changed from emerald/green to amber
-  
+
   // Linear-style large background glow
   let bgGlowColor = "transparent";
   if (isBlue) bgGlowColor = "rgba(59, 130, 246, 0.15)";
@@ -156,22 +156,30 @@ export function BentoItem({
         className
       )}
     >
-      {/* Background Static Glow (Linear Style) */}
+      {/* Background Static Glow (Linear Style) - Enhanced */}
       {isFeatured && (
-         <div 
-           className="absolute -top-1/4 -right-1/4 w-3/4 h-3/4 blur-[120px] rounded-full pointer-events-none opacity-20 group-hover:opacity-40 transition-opacity duration-700"
-           style={{ background: bgGlowColor }}
-         />
+        <>
+          {/* Main Background Glow */}
+          <div
+            className="absolute -top-1/3 -right-1/3 w-full h-full blur-[140px] rounded-full pointer-events-none opacity-25 group-hover:opacity-50 transition-opacity duration-700"
+            style={{ background: bgGlowColor }}
+          />
+          {/* Secondary Bottom Glow for depth */}
+          <div
+            className="absolute -bottom-1/4 -left-1/4 w-3/4 h-3/4 blur-[100px] rounded-full pointer-events-none opacity-15 group-hover:opacity-30 transition-opacity duration-700"
+            style={{ background: bgGlowColor }}
+          />
+        </>
       )}
 
       {/* Top Neon Border (Revealed via Mask or just a localized gradient) */}
-      <div 
+      <div
         className="absolute inset-x-0 top-0 h-px transition-opacity duration-500 opacity-60 group-hover:opacity-100"
         style={{
           background: `linear-gradient(90deg, transparent, ${topBorderColor}, transparent)`,
         }}
       />
-      
+
       {/* Dynamic Mouse Glow */}
       <motion.div
         className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"

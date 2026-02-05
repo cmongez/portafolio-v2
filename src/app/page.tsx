@@ -107,7 +107,18 @@ export default async function Home() {
 
       <BentoGrid>
         <BentoItem colSpan={3} index={0} className="md:min-h-[400px] relative z-10 p-0 overflow-visible" id="hero">
-          <div className="grid md:grid-cols-2 gap-8 h-full items-center p-6 md:p-10">
+          {/* Background GIS Topográfico */}
+          <div
+            className="absolute inset-0 opacity-5 pointer-events-none z-0"
+            style={{
+              backgroundImage: "url('/topo-lines.svg')",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat"
+            }}
+          />
+
+          <div className="grid md:grid-cols-2 gap-8 h-full items-center p-6 md:p-10 relative z-10">
             <div className="flex flex-col justify-center max-w-xl">
               <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 leading-[1.1]">
                 <span className="bg-gradient-to-b from-white via-white to-neutral-500 bg-clip-text text-transparent">
@@ -115,12 +126,12 @@ export default async function Home() {
                 </span>
               </h1>
 
-              <div className="flex flex-col md:flex-row md:items-center gap-2 text-lg text-neutral-400 font-medium leading-relaxed mb-6">
+              <div className="flex flex-col md:flex-row md:items-center gap-2 text-lg text-neutral-300 font-medium leading-relaxed mb-6">
                 <span>Soluciones para:</span>
                 <TypewriterEffect />
               </div>
 
-              <p className="text-neutral-400 text-sm md:text-base leading-relaxed max-w-lg mb-8">
+              <p className="text-neutral-300 text-sm md:text-base leading-relaxed max-w-lg mb-8">
                 <span className="text-neutral-100 font-semibold">Analista Programador</span> y <span className="text-neutral-100 font-semibold">Desarrollador Full Stack</span> con <span className="text-neutral-100 font-semibold">3 años de experiencia</span>. Aplico mi <span className="text-neutral-100 font-semibold">formación contable</span> para desarrollar <span className="text-neutral-100 font-semibold">software financiero</span> y lógica de negocio crítica. Desarrollo en Frontend y Backend dominando <span className="text-neutral-100 font-semibold">React</span>, <span className="text-neutral-100 font-semibold">React Native</span>, <span className="text-neutral-100 font-semibold">TypeScript</span>, <span className="text-neutral-100 font-semibold">Python</span>, <span className="text-neutral-100 font-semibold">Node.js</span> y <span className="text-neutral-100 font-semibold">PostgreSQL</span>. Actualmente implemento <span className="text-neutral-100 font-semibold">soluciones GIS</span> y <span className="text-neutral-100 font-semibold">Cloud (AWS)</span> en NVIRO.
               </p>
 
@@ -196,7 +207,7 @@ export default async function Home() {
             headerAccentClassName="text-blue-400"
             showScanLine
             isFeatured={true}
-            className="md:min-h-[450px] border-neutral-700 hover:border-blue-500/50 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)] transition-all duration-500"
+            className="md:min-h-[450px] border-neutral-700 hover:border-blue-500/50 hover:shadow-[0_0_40px_-5px_rgba(59,130,246,0.4)] transition-all duration-500"
           >
             <div className="grid md:grid-cols-2 gap-8 h-full items-center">
               <div className="flex flex-col justify-between h-full py-2">
@@ -241,7 +252,7 @@ export default async function Home() {
             index={2}
             headerAccentClassName="text-amber-400"
             isFeatured={true}
-            className="md:min-h-[450px] border-neutral-700 hover:border-blue-500/50 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)] transition-all duration-500"
+            className="md:min-h-[450px] border-neutral-700 hover:border-amber-500/50 hover:shadow-[0_0_40px_-5px_rgba(245,158,11,0.4)] transition-all duration-500"
           >
             <div className="grid md:grid-cols-2 gap-8 h-full items-center">
               <div className="flex flex-col justify-between h-full py-2">

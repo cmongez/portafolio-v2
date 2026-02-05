@@ -1,8 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { experience, education, certifications } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { ChevronDown } from "lucide-react";
 
 export function ExperienceTimeline() {
   return (
@@ -15,49 +17,7 @@ export function ExperienceTimeline() {
         </h3>
         <div className="relative border-l border-neutral-800 ml-3 space-y-10 pb-4">
           {experience.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative pl-8 group"
-            >
-              {/* Timeline Dot */}
-              <span
-                className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full border border-neutral-900 ring-2 ring-neutral-900 transition-shadow duration-300"
-                style={{
-                  backgroundColor: item.color || "#f59e0b",
-                  boxShadow: `0 0 12px ${item.color || "#f59e0b"}99` // adding transparency to shadow
-                }}
-              />
-
-              <div className="flex flex-col gap-1 mb-2">
-                <h4 className="text-lg font-bold text-neutral-200">
-                  {item.role}
-                </h4>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                  <span
-                    className="text-base font-medium transition-colors duration-300"
-                    style={{ color: item.color || "#fbbf24" }}
-                  >
-                    {item.company}
-                  </span>
-                  <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest whitespace-nowrap">
-                    {item.period}
-                  </span>
-                </div>
-              </div>
-
-              <ul className="space-y-3 mt-3">
-                {item.highlight.map((point, i) => (
-                  <li key={i} className="text-sm text-neutral-300 leading-loose max-w-2xl flex items-start gap-3">
-                    <span className="mt-2 w-2 h-[1px] bg-neutral-500 shrink-0" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+            <ExperienceItem key={index} item={item} index={index} />
           ))}
         </div>
       </div>
@@ -112,8 +72,8 @@ export function ExperienceTimeline() {
               <li key={idx} className="flex flex-col border border-neutral-800/50 bg-neutral-900/30 rounded-lg p-3 hover:border-neutral-700 transition-colors">
                 <span className="text-neutral-300 font-medium text-sm mb-1">{cert.title}</span>
                 <div className="flex justify-between items-center text-xs">
-                  <span className="text-neutral-400">{cert.institution}</span>
-                  <span className="text-neutral-400 font-mono">{cert.year}</span>
+                  <span className="text-neutral-300">{cert.institution}</span>
+                  <span className="text-neutral-300 font-mono">{cert.year}</span>
                 </div>
               </li>
             ))}
@@ -121,5 +81,85 @@ export function ExperienceTimeline() {
         </div>
       </div>
     </section>
+  );
+}
+
+// Subcomponente para cada item de experiencia con funcionalidad de acordeón
+function ExperienceItem({ item, index }: { item: any; index: number }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const hasMoreThanTwo = item.highlight.length > 2;
+  const visiblePoints = isExpanded ? item.highlight : item.highlight.slice(0, 2);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -10 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="relative pl-8 group"
+    >
+      {/* Timeline Dot - Preparado para logo de empresa */}
+      <div
+        className="absolute -left-[13px] top-1.5 w-6 h-6 rounded-full border-2 border-neutral-900 ring-4 ring-neutral-950 transition-all duration-300 group-hover:scale-110 flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundColor: item.color || "#f59e0b",
+          boxShadow: `0 0 12px ${item.color || "#f59e0b"}99`
+        }}
+      >
+        {/* Placeholder para logo futuro - por ahora muestra un punto */}
+        <span className="w-2 h-2 rounded-full bg-white/40" />
+      </div>
+
+      <div className="flex flex-col gap-1 mb-4">
+        <h4 className="text-lg font-bold text-neutral-200">
+          {item.role}
+        </h4>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+          <span
+            className="text-base font-medium transition-colors duration-300"
+            style={{ color: item.color || "#fbbf24" }}
+          >
+            {item.company}
+          </span>
+          <span className="text-xs font-mono text-neutral-300 uppercase tracking-widest whitespace-nowrap">
+            {item.period}
+          </span>
+        </div>
+      </div>
+
+      <ul className="space-y-4 mt-3">
+        <AnimatePresence initial={false}>
+          {visiblePoints.map((point: string, i: number) => (
+            <motion.li
+              key={i}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="text-sm text-neutral-300 leading-relaxed max-w-2xl flex items-start gap-3"
+            >
+              <span className="mt-2 w-2 h-[1px] bg-neutral-500 shrink-0" />
+              <span>{point}</span>
+            </motion.li>
+          ))}
+        </AnimatePresence>
+      </ul>
+
+      {/* Botón Ver más / Ver menos */}
+      {hasMoreThanTwo && (
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="mt-3 inline-flex items-center gap-1 text-xs text-amber-500 hover:text-amber-400 font-medium transition-colors duration-200 group/btn"
+        >
+          <span>{isExpanded ? "Ver menos" : `Ver más (${item.highlight.length - 2} más)`}</span>
+          <ChevronDown
+            className={cn(
+              "w-3 h-3 transition-transform duration-300",
+              isExpanded && "rotate-180"
+            )}
+          />
+        </button>
+      )}
+    </motion.div>
   );
 }
