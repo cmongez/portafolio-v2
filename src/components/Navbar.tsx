@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Home, Briefcase, FolderKanban, Layers, GraduationCap, Code2 } from "lucide-react";
+import { Home, Briefcase, FolderKanban, GraduationCap, Code2 } from "lucide-react";
 
 export function Navbar() {
   const navItems = [

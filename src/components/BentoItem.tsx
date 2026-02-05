@@ -14,7 +14,6 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
-  useScroll,
 } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -48,7 +47,6 @@ export function BentoItem({
   iconName,
   colSpan = 1,
   rowSpan = 1,
-  index = 0,
   headerAccentClassName,
   showScanLine = false,
   isFeatured = false,
@@ -67,11 +65,6 @@ export function BentoItem({
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
   }
-
-  const { scrollYProgress } = useScroll({
-    offset: ["0 1", "1.2 1"], // Reveal when enter viewport
-  });
-  const opacity = useTransform(scrollYProgress, [0, 1], [0.6, 1]); // Simple fade in? Or use whileInView
 
   // We want a "reveal on scroll" with slight upward movement
   // Using Variants is cleaner for "whileInView"

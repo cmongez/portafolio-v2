@@ -6,6 +6,14 @@ import { experience, education, certifications } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 
+interface ExperienceEntry {
+  role: string;
+  company: string;
+  period: string;
+  highlight: string[];
+  color?: string;
+}
+
 export function ExperienceTimeline() {
   return (
     <section className="space-y-12">
@@ -17,12 +25,12 @@ export function ExperienceTimeline() {
         </h3>
         <div className="relative border-l border-neutral-800 ml-3 space-y-10 pb-4">
           {experience.map((item, index) => (
-            <ExperienceItem key={index} item={item} index={index} />
+            <ExperienceItem key={index} item={item as ExperienceEntry} index={index} />
           ))}
         </div>
       </div>
 
-      {/* Education & Certifications Container - Stacked Vertically as req */}
+      {/* Education & Certifications Container */}
       <div className="flex flex-col gap-12">
         {/* Education Section */}
         <div className="space-y-6" id="education">
@@ -85,7 +93,7 @@ export function ExperienceTimeline() {
 }
 
 // Subcomponente para cada item de experiencia con funcionalidad de acordeón
-function ExperienceItem({ item, index }: { item: any; index: number }) {
+function ExperienceItem({ item, index }: { item: ExperienceEntry; index: number }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const hasMoreThanTwo = item.highlight.length > 2;
   const visiblePoints = isExpanded ? item.highlight : item.highlight.slice(0, 2);
