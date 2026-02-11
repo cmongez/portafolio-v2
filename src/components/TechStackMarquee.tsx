@@ -7,54 +7,55 @@ import Image from "next/image";
 const getIconUrl = (slug: string) => `https://cdn.simpleicons.org/${slug}`;
 
 const technologies = [
-  // --- Languages ---
-  { name: "JavaScript", icon: getIconUrl("javascript") },
+  // --- Core Fullstack (High Impact) ---
+  { name: "Next.js", icon: getIconUrl("nextdotjs/white") },
   { name: "TypeScript", icon: getIconUrl("typescript") },
+  { name: "React", icon: getIconUrl("react") },
+  { name: "Node.js", icon: getIconUrl("nodedotjs") },
+  { name: "Express", icon: getIconUrl("express/white") },
+
+  // --- Backend & Specialization (GIS) ---
   { name: "Python", icon: getIconUrl("python") },
-  { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
-  { name: "SQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" }, // Good SQL representation
+  { name: "PostgreSQL", icon: getIconUrl("postgresql") },
+  { name: "PostGIS", icon: getIconUrl("postgresql") },
+  { name: "FastAPI", icon: getIconUrl("fastapi") },
+
+  // --- Languages & Web Core ---
+  { name: "JavaScript", icon: getIconUrl("javascript") },
   { name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
   { name: "CSS3", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+  { name: "SQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" },
 
-  // --- Frontend ---
-  { name: "React", icon: getIconUrl("react") },
+  // --- Other Backend / DB ---
+  { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+  { name: "Spring Boot", icon: getIconUrl("springboot") },
+  { name: "Firebase", icon: getIconUrl("firebase") },
+  { name: "MySQL", icon: getIconUrl("mysql") },
+  { name: "SQL Server", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" },
+
+  // --- Frontend & Styling ---
   { name: "React Native", icon: getIconUrl("react") },
-  { name: "Next.js", icon: getIconUrl("nextdotjs/white") }, // White variant for dark mode visibility from simpleicons directly
-  // Note: SimpleIcons supports color overrides. 
-  // Next.js default is black. On dark bg, white is needed.
-  { name: "Vue.js", icon: getIconUrl("vuedotjs") },
-  { name: "Redux", icon: getIconUrl("redux") },
-  { name: "Bootstrap", icon: getIconUrl("bootstrap") },
-  { name: "SASS", icon: getIconUrl("sass") },
   { name: "Tailwind", icon: getIconUrl("tailwindcss") },
+  { name: "Redux", icon: getIconUrl("redux") },
+  { name: "SASS", icon: getIconUrl("sass") },
+  { name: "Bootstrap", icon: getIconUrl("bootstrap") },
   { name: "Material UI", icon: getIconUrl("mui") },
   { name: "Chart.js", icon: getIconUrl("chartdotjs") },
-
-  // --- Backend / DB ---
-  { name: "Node.js", icon: getIconUrl("nodedotjs") },
-  { name: "Express", icon: getIconUrl("express/white") }, // White variant
-  { name: "FastAPI", icon: getIconUrl("fastapi") },
-  { name: "PostgreSQL", icon: getIconUrl("postgresql") },
-  // Usando el icono de PostgreSQL para PostGIS también, ya que es la extensión espacial nativa
-  { name: "PostGIS", icon: getIconUrl("postgresql") },
-  { name: "SQL Server", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" },
-  { name: "MySQL", icon: getIconUrl("mysql") },
-  { name: "Firebase", icon: getIconUrl("firebase") },
-  { name: "Spring Boot", icon: getIconUrl("springboot") },
+  { name: "Vue.js", icon: getIconUrl("vuedotjs") },
 
   // --- Cloud / DevOps ---
-  { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" }, // Devicon for reliability
-  { name: "Azure", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" }, // Devicon
   { name: "Docker", icon: getIconUrl("docker") },
-  { name: "Git", icon: getIconUrl("git") },
+  { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+  { name: "Azure", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" },
   { name: "GitHub", icon: getIconUrl("github/white") },
+  { name: "Git", icon: getIconUrl("git") },
   { name: "Scrum", icon: "https://cdn.simpleicons.org/scrumalliance" },
 
-  // --- GIS ---
-  { name: "Mapbox", icon: getIconUrl("mapbox/white") }, // Mapbox is usually black text, need white
+  // --- Visualization & GIS ---
+  { name: "Mapbox", icon: getIconUrl("mapbox/white") },
   { name: "Leaflet", icon: getIconUrl("leaflet") },
 
-  // --- CMS / Platforms ---
+  // --- CMS / Platforms (End) ---
   { name: "WordPress", icon: getIconUrl("wordpress") },
   { name: "WooCommerce", icon: getIconUrl("woocommerce") },
 ];
