@@ -73,6 +73,45 @@ export const LEGACY_LEARNING_CATEGORY = "Legacy/Learning" as const;
 
 export const projects: Project[] = [
   {
+    id: "domintel",
+    name: "Domintel — Plataforma de Inteligencia de Dominios con IA",
+    description:
+      "Sistema híbrido de inteligencia de dominios .cl que combina heurística propietaria con OpenAI GPT-4o. Arquitectura optimizada con streaming y bulk upsert (lotes de 1,000) para Supabase. Dashboard Next.js con búsqueda full-text server-side indexada capaz de gestionar 30,000+ registros con latencia de ~100ms.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Python",
+      "OpenAI API",
+      "Supabase",
+      "PostgreSQL",
+      "GitHub Actions",
+      "Tailwind CSS",
+    ],
+    impact:
+      "Automatización 24/7 con GitHub Actions, reduciendo costos de API en un 75% mediante optimización de prompts y heurística local. Operaciones masivas 500x más rápidas con 0% pérdida de datos ante interrupciones.",
+    isFeatured: true,
+    href: "https://github.com/cmongez/domintel",
+  },
+  {
+    id: "dolarapesos",
+    name: "Dolarapesos.cl — Comparador de divisas multi-fuente para Chile",
+    description:
+      "Comparador de divisas multi-fuente para Chile integrando APIs del Banco Central, mindicador.cl y exchanges crypto. Arquitectura serverless escalable con SST (AWS Lambda) y Next.js. Sistema de caché inteligente con Supabase y generación dinámica de Blog SEO con Gemini Flash.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "SST",
+      "AWS Lambda",
+      "Supabase",
+      "Gemini API",
+      "Tailwind CSS",
+    ],
+    impact:
+      "Precisión decimal garantizada gracias al background contable. SEO semántico para posicionamiento orgánico en búsquedas de conversión USD/CLP, superando a la competencia establecida.",
+    isFeatured: true,
+    demo: "https://dolarapesos.cl",
+  },
+  {
     id: "nviro",
     name: "NVIRO — Sistema de Gestión Geoespacial",
     description:

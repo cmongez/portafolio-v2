@@ -96,8 +96,7 @@ const techStackCategoryLabels: Record<keyof typeof techStack, string> = {
 };
 
 export default async function Home() {
-  const nviroProject = projects.find((p) => p.id === "nviro");
-  const agrosuperProject = projects.find((p) => p.id === "agrosuper");
+  const featuredProjects = projects.filter((p) => p.isFeatured);
   const legacyProjects = await getLegacyProjects();
 
   return (
@@ -196,99 +195,111 @@ export default async function Home() {
 
         {/* PROYECTOS SECTION START */}
 
-        {/* Fila 3: NVIRO (Full Width - Premium Feature) */}
-        {nviroProject && (
-          <BentoItem
-            title={nviroProject.name}
-            id="projects"
-            iconName="folder-kanban"
-            colSpan={3}
-            index={1} // Adjusted index
-            headerAccentClassName="text-blue-400"
-            showScanLine
-            isFeatured={true}
-            className="md:min-h-[450px] border-neutral-700 hover:border-blue-500/50 hover:shadow-[0_0_40px_-5px_rgba(59,130,246,0.4)] transition-all duration-500"
-          >
-            <div className="grid md:grid-cols-2 gap-8 h-full items-center">
-              <div className="flex flex-col justify-between h-full py-2">
-                <div>
-                  <p className="text-base text-neutral-300 leading-loose">
-                    {nviroProject.description}
-                  </p>
-                  {nviroProject.impact && (
-                    <div className="mt-8 border-l-2 border-blue-500/30 pl-4">
-                      <p className="text-sm text-neutral-300 font-medium leading-loose">
-                        {nviroProject.impact}
-                      </p>
+        {/* Renderiza todos los proyectos featured dinámicamente */}
+        {featuredProjects.map((project, idx) => {
+          const accentColors = [
+            { text: 'text-emerald-400', border: 'border-emerald-500/50', shadow: 'shadow-[0_0_40px_-5px_rgba(16,185,129,0.4)]' },
+            { text: 'text-cyan-400', border: 'border-cyan-500/50', shadow: 'shadow-[0_0_40px_-5px_rgba(6,182,212,0.4)]' },
+            { text: 'text-blue-400', border: 'border-blue-500/50', shadow: 'shadow-[0_0_40px_-5px_rgba(59,130,246,0.4)]' },
+            { text: 'text-amber-400', border: 'border-amber-500/50', shadow: 'shadow-[0_0_40px_-5px_rgba(245,158,11,0.4)]' },
+            { text: 'text-purple-400', border: 'border-purple-500/50', shadow: 'shadow-[0_0_40px_-5px_rgba(168,85,247,0.4)]' },
+          ];
+          
+          const colors = accentColors[idx % accentColors.length];
+          const hasImage = project.img || ['nviro', 'agrosuper', 'domintel', 'dolarapesos', 'aquachile'].includes(project.id);
+          const imageMap: Record<string, string> = {
+            nviro: '/img/nviro.png',
+            agrosuper: '/img/agrosuper.jpg',
+            domintel: '/img/domintel.png',
+            dolarapesos: '/img/dolarapesos.png',
+            aquachile: '/img/aquachile.jpg',
+          };
+
+          return (
+            <BentoItem
+              key={project.id}
+              title={project.name}
+              id={idx === 0 ? "projects" : undefined}
+              iconName="folder-kanban"
+              colSpan={3}
+              index={idx + 1}
+              headerAccentClassName={colors.text}
+              showScanLine={idx === 0}
+              isFeatured={true}
+              className={`md:min-h-[450px] border-neutral-700 hover:${colors.border} hover:${colors.shadow} transition-all duration-500`}
+            >
+              <div className="grid md:grid-cols-2 gap-8 h-full items-center">
+                <div className="flex flex-col justify-between h-full py-2">
+                  <div>
+                    <p className="text-base text-neutral-300 leading-loose">
+                      {project.description}
+                    </p>
+                    {project.impact && (
+                      <div className="mt-8 border-l-2 border-current pl-4 opacity-50">
+                        <p className="text-sm text-neutral-300 font-medium leading-loose">
+                          {project.impact}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                  <div className="mt-8 flex flex-col gap-4">
+                    <TechChips items={project.stack} />
+                    {(project.demo || project.repository || project.href) && (
+                      <div className="flex gap-3">
+                        {project.demo && (
+                          <Link
+                            href={project.demo}
+                            target="_blank"
+                            className="text-sm px-4 py-2 rounded-md bg-neutral-800/60 hover:bg-neutral-700 border border-neutral-700 text-neutral-300 hover:text-white transition-colors"
+                          >
+                            Ver Demo →
+                          </Link>
+                        )}
+                        {project.repository && (
+                          <Link
+                            href={project.repository}
+                            target="_blank"
+                            className="text-sm px-4 py-2 rounded-md border border-neutral-700 text-neutral-400 hover:text-white hover:border-neutral-500 transition-colors"
+                          >
+                            GitHub
+                          </Link>
+                        )}
+                        {project.href && !project.demo && !project.repository && (
+                          <Link
+                            href={project.href}
+                            target="_blank"
+                            className="text-sm px-4 py-2 rounded-md bg-neutral-800/60 hover:bg-neutral-700 border border-neutral-700 text-neutral-300 hover:text-white transition-colors"
+                          >
+                            Ver más →
+                          </Link>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {hasImage && (
+                  <div className="hidden md:flex items-center justify-center p-4">
+                    <div className="relative w-full aspect-video rounded-lg border border-neutral-800/80 bg-neutral-900/80 overflow-hidden shadow-2xl">
+                      <Image
+                        src={project.img || imageMap[project.id] || '/img/placeholder.jpg'}
+                        alt={`${project.name} Interface`}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        priority={idx === 0}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/60 via-transparent to-transparent" />
                     </div>
-                  )}
-                </div>
-                <TechChips items={nviroProject.stack} className="mt-8" />
+                  </div>
+                )}
               </div>
-
-              <div className="hidden md:flex items-center justify-center p-4">
-                <div className="relative w-full aspect-video rounded-lg border border-neutral-800/80 bg-neutral-900/80 overflow-hidden shadow-2xl">
-                  <Image
-                    src="/img/nviro.png"
-                    alt="NVIRO GIS System Interface"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/60 via-transparent to-transparent" />
-                </div>
-              </div>
-            </div>
-          </BentoItem>
-        )}
-
-        {/* Fila 4: Agrosuper */}
-        {agrosuperProject && (
-          <BentoItem
-            title={agrosuperProject.name}
-            iconName="folder-kanban"
-            colSpan={3}
-            index={2}
-            headerAccentClassName="text-amber-400"
-            isFeatured={true}
-            className="md:min-h-[450px] border-neutral-700 hover:border-amber-500/50 hover:shadow-[0_0_40px_-5px_rgba(245,158,11,0.4)] transition-all duration-500"
-          >
-            <div className="grid md:grid-cols-2 gap-8 h-full items-center">
-              <div className="flex flex-col justify-between h-full py-2">
-                <div>
-                  <p className="text-base text-neutral-300 leading-loose">
-                    {agrosuperProject.description}
-                  </p>
-                  {agrosuperProject.impact && (
-                    <div className="mt-8 border-l-2 border-amber-500/30 pl-4">
-                      <p className="text-sm text-neutral-300 font-medium leading-loose">
-                        {agrosuperProject.impact}
-                      </p>
-                    </div>
-                  )}
-                </div>
-                <TechChips items={agrosuperProject.stack} className="mt-8" />
-              </div>
-
-              <div className="hidden md:flex items-center justify-center p-4">
-                <div className="relative w-full aspect-video rounded-lg border border-neutral-800/80 bg-neutral-900/80 overflow-hidden shadow-2xl">
-                  <Image
-                    src="/img/agrosuper.jpeg"
-                    alt="Agrosuper Finance Interface"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/60 via-transparent to-transparent" />
-                </div>
-              </div>
-            </div>
-          </BentoItem>
-        )}
+            </BentoItem>
+          );
+        })}
 
         {/* EXPERIENCE & STACK SECTION */}
-        <BentoItem colSpan={3} index={3} className="bg-neutral-900/20 border-none" id="experience">
+        <BentoItem colSpan={3} index={featuredProjects.length + 1} className="bg-neutral-900/20 border-none" id="experience">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Timeline takes 2 cols */}
             <div className="md:col-span-2">
@@ -326,7 +337,7 @@ export default async function Home() {
         <div className="md:col-span-3">
           <LegacyProjectsSection
             projects={legacyProjects}
-            staggerStartIndex={4} // Adjust index
+            staggerStartIndex={featuredProjects.length + 2}
           />
         </div>
 
