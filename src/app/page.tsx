@@ -1,3 +1,5 @@
+'use client';
+
 import type { Metadata } from "next";
 import { getLegacyProjects } from "@/services/projectService";
 import { BentoGrid } from "@/components/BentoGrid";
