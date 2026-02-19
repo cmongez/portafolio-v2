@@ -21,6 +21,7 @@ import {
 import { Linkedin, Github } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { track } from "@vercel/analytics";
 
 export const metadata: Metadata = {
   title: "César Mongez | Full Stack & GIS Specialist Portfolio",
@@ -138,6 +139,7 @@ export default async function Home() {
                 <Link
                   href={socials.find(s => s.id === "linkedin")?.href || "#"}
                   target="_blank"
+                  onClick={() => track('Click_LinkedIn')}
                   className="px-6 py-2.5 rounded-md bg-[#0A66C2] text-white font-semibold text-sm hover:bg-[#004182] transition-colors flex items-center gap-2 shadow-lg shadow-blue-900/20"
                 >
                   <socialIconMap.linkedin className="w-4 h-4" />
@@ -147,6 +149,7 @@ export default async function Home() {
                 <Link
                   href={socials.find(s => s.id === "github")?.href || "#"}
                   target="_blank"
+                  onClick={() => track('Click_GitHub')}
                   className="px-6 py-2.5 rounded-md border border-neutral-700 text-neutral-300 font-medium text-sm hover:text-white hover:border-neutral-500 transition-colors flex items-center gap-2"
                 >
                   <socialIconMap.github className="w-4 h-4" />
@@ -156,6 +159,7 @@ export default async function Home() {
                 <Link
                   href="/001_CV_Cesar_Mongez_Desarrollador_Full_Stack.pdf"
                   target="_blank"
+                  onClick={() => track('Ver_CV_Online')}
                   className="px-6 py-2.5 rounded-md border border-amber-600 text-amber-500 font-semibold text-sm hover:bg-amber-600 hover:text-white transition-colors flex items-center gap-2"
                 >
                   Ver CV
@@ -164,6 +168,7 @@ export default async function Home() {
                 <Link
                   href="/001_CV_Cesar_Mongez_Desarrollador_Full_Stack.pdf"
                   download="001_CV_Cesar_Mongez_Desarrollador_Full_Stack.pdf"
+                  onClick={() => track('Descargar_CV')}
                   className="px-6 py-2.5 rounded-md bg-amber-600 text-white font-semibold text-sm hover:bg-amber-500 transition-colors flex items-center gap-2 shadow-lg shadow-amber-900/20"
                 >
                   Descargar CV
