@@ -13,12 +13,21 @@ const technologies = [
   { name: "React", icon: getIconUrl("react") },
   { name: "Node.js", icon: getIconUrl("nodedotjs") },
   { name: "Express", icon: getIconUrl("express/white") },
+  { name: "NestJS", icon: getIconUrl("nestjs") },
 
-  // --- Backend & Specialization (GIS) ---
+  // --- AI ---
+  { name: "Claude", icon: getIconUrl("claude") },
+
+  // --- Backend & Data ---
   { name: "Python", icon: getIconUrl("python") },
+  { name: "FastAPI", icon: getIconUrl("fastapi") },
+  { name: "PHP", icon: getIconUrl("php") },
+  { name: "Laravel", icon: getIconUrl("laravel") },
   { name: "PostgreSQL", icon: getIconUrl("postgresql") },
   { name: "PostGIS", icon: getIconUrl("postgresql") },
-  { name: "FastAPI", icon: getIconUrl("fastapi") },
+  { name: "MongoDB", icon: getIconUrl("mongodb") },
+  { name: "Redis", icon: getIconUrl("redis") },
+  { name: "Prisma", icon: getIconUrl("prisma/white") },
 
   // --- Languages & Web Core ---
   { name: "JavaScript", icon: getIconUrl("javascript") },

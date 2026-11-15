@@ -3,7 +3,12 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
-const words = ["Full Stack Developer", "Mobile App Developer", "GIS Specialist", "Fintech Developer"];
+const words = [
+  "Full Stack Developer",
+  "AI Integration Specialist",
+  "Cloud & Microservices Developer",
+  "GIS & Fintech Developer",
+];
 
 export function TypewriterEffect() {
   const [index, setIndex] = useState(0);
@@ -17,9 +22,9 @@ export function TypewriterEffect() {
 
   const colors = {
     "Full Stack Developer": "text-white",
-    "Mobile App Developer": "text-emerald-400", 
-    "GIS Specialist": "text-blue-500",
-    "Fintech Developer": "text-amber-500",
+    "AI Integration Specialist": "text-violet-400",
+    "Cloud & Microservices Developer": "text-emerald-400",
+    "GIS & Fintech Developer": "text-blue-500",
   }[words[index]] || "text-amber-500";
 
   return (

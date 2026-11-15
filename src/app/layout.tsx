@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "César Mongez | Full Stack & GIS Specialist",
+  title: "César Mongez | Full Stack Developer & AI Integration",
   description:
-    "Portafolio de César Mongez. Soluciones en Minería, GIS y Fintech.",
+    "Portafolio de César Mongez. Desarrollo Full Stack e integración de agentes de IA (Claude, AWS Bedrock), con experiencia en GIS y Fintech.",
 };
 
 export default function RootLayout({

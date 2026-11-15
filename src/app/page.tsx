@@ -14,6 +14,7 @@ import { TechStackMarquee } from "@/components/TechStackMarquee";
 import { SocialActions } from "@/components/SocialActions";
 import {
   profile,
+  profileHighlights,
   projects,
   techStack,
   quickMetrics,
@@ -22,25 +23,34 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "César Mongez | Full Stack & GIS Specialist Portfolio",
-  description: "Portafolio profesional de César Mongez. Desarrollador Full Stack con 3 años de experiencia en soluciones GIS, Fintech y desarrollo mobile. Especialista en React, TypeScript, Python y PostgreSQL/PostGIS.",
+  title: "César Mongez | Full Stack Developer & AI Integration",
+  description: "Portafolio profesional de César Mongez. Desarrollador Full Stack con 3 años de experiencia integrando agentes de IA y LLMs (Claude, AWS Bedrock) en productos SaaS. Especializado en Next.js, NestJS, Python/FastAPI y AWS, con experiencia en soluciones GIS y Fintech.",
   keywords: [
     "César Mongez",
     "Full Stack Developer",
-    "GIS Specialist",
+    "AI Integration",
+    "Inteligencia Artificial",
+    "LLM",
+    "Claude",
+    "AWS Bedrock",
+    "pgvector",
+    "Next.js",
     "React",
     "TypeScript",
-    "Python",
-    "PostgreSQL",
-    "PostGIS",
-    "Next.js",
-    "Mobile Development",
-    "React Native",
-    "Fintech",
-    "AWS",
+    "NestJS",
     "Node.js",
+    "Python",
     "FastAPI",
+    "PHP",
+    "Laravel",
+    "PostgreSQL",
+    "AWS",
+    "Docker",
+    "Microservicios",
     "Desarrollador Chile",
+    "GIS",
+    "PostGIS",
+    "Fintech",
   ],
   authors: [{ name: "César Mongez" }],
   creator: "César Mongez",
@@ -48,22 +58,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_CL",
     url: "https://cesarmongez.com",
-    title: "César Mongez | Full Stack & GIS Specialist",
-    description: "Desarrollador Full Stack especializado en GIS y Fintech con 3 años de experiencia. Soluciones innovadoras para Minería, Acuicultura y Servicios Financieros.",
+    title: "César Mongez | Full Stack Developer & AI Integration",
+    description: "Desarrollador Full Stack con 3 años de experiencia integrando agentes de IA (Claude, AWS Bedrock) en productos SaaS. Next.js, NestJS, Python y AWS, con trayectoria en GIS y Fintech.",
     siteName: "César Mongez Portfolio",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "César Mongez - Full Stack Developer & GIS Specialist",
+        alt: "César Mongez - Full Stack Developer & AI Integration",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "César Mongez | Full Stack & GIS Specialist",
-    description: "Desarrollador Full Stack especializado en GIS y Fintech. React, TypeScript, Python, PostgreSQL/PostGIS.",
+    title: "César Mongez | Full Stack Developer & AI Integration",
+    description: "Desarrollador Full Stack integrando agentes de IA (Claude, AWS Bedrock). Next.js, NestJS, Python/FastAPI, AWS.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -84,10 +94,26 @@ export const metadata: Metadata = {
 
 const techStackCategoryLabels: Record<keyof typeof techStack, string> = {
   languages: "Lenguajes",
-  database: "Bases de datos",
-  cloudGis: "Cloud / GIS",
   frontend: "Frontend",
+  backend: "Backend & Testing",
+  database: "Bases de datos",
+  cloudAi: "Cloud & IA",
+  gis: "GIS",
 };
+
+function renderHighlighted(text: string, terms: string[]) {
+  const escaped = [...terms]
+    .sort((a, b) => b.length - a.length)
+    .map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const parts = text.split(new RegExp(`(${escaped.join("|")})`, "g"));
+  return parts.map((part, i) =>
+    terms.includes(part) ? (
+      <span key={i} className="text-neutral-100 font-semibold">{part}</span>
+    ) : (
+      part
+    )
+  );
+}
 
 export default async function Home() {
   const featuredProjects = projects.filter((p) => p.isFeatured);
@@ -125,7 +151,7 @@ export default async function Home() {
               </div>
 
               <p className="text-neutral-300 text-sm md:text-base leading-relaxed max-w-lg mb-8">
-                <span className="text-neutral-100 font-semibold">Analista Programador</span> y <span className="text-neutral-100 font-semibold">Desarrollador Full Stack</span> con <span className="text-neutral-100 font-semibold">3 años de experiencia</span>. Aplico mi <span className="text-neutral-100 font-semibold">formación contable</span> para desarrollar <span className="text-neutral-100 font-semibold">software financiero</span> y lógica de negocio crítica. Desarrollo en Frontend y Backend dominando <span className="text-neutral-100 font-semibold">React</span>, <span className="text-neutral-100 font-semibold">React Native</span>, <span className="text-neutral-100 font-semibold">TypeScript</span>, <span className="text-neutral-100 font-semibold">Python</span>, <span className="text-neutral-100 font-semibold">Node.js</span> y <span className="text-neutral-100 font-semibold">PostgreSQL</span>. Actualmente implemento <span className="text-neutral-100 font-semibold">soluciones GIS</span> y <span className="text-neutral-100 font-semibold">Cloud (AWS)</span> en NVIRO.
+                {renderHighlighted(profile.description ?? "", profileHighlights)}
               </p>
 
               <div className="flex flex-wrap gap-4 items-center">

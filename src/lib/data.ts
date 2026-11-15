@@ -1,5 +1,5 @@
 /**
- * Data layer — César Mongez | Full Stack & GIS Specialist
+ * Data layer — César Mongez | Full Stack Developer & AI Integration
  * Fuente: CV y perfil LinkedIn. Variables en INGLÉS, textos visibles en ESPAÑOL.
  */
 
@@ -46,9 +46,11 @@ export interface Social {
 
 export interface TechStackByCategory {
   languages: string[];
-  database: string[];
-  cloudGis: string[];
   frontend: string[];
+  backend: string[];
+  database: string[];
+  cloudAi: string[];
+  gis: string[];
 }
 
 // --- PROFILE ---
@@ -57,8 +59,28 @@ export const profile: Profile = {
   name: "César Mongez",
   title: "Desarrollador Full Stack",
   description:
-    "Analista Programador y Desarrollador Full Stack con 3 años de experiencia. Aplico mi formación contable para desarrollar software financiero y lógica de negocio crítica. Desarrollo en Frontend y Backend dominando React, React Native, TypeScript, Python, Node.js y PostgreSQL. Actualmente implemento soluciones GIS y Cloud (AWS) en NVIRO. Poseo experiencia previa liderando equipos, gestionando proyectos y requisitos bajo Scrum y Design Thinking.",
+    "Analista Programador y Desarrollador Full Stack con 3 años de experiencia. Combino mi formación contable con el desarrollo de software financiero y plataformas SaaS. Especializado en React/Next.js, Python/FastAPI, Node.js/NestJS y PHP/Laravel. Actualmente diseño productos escalables, integro agentes de Inteligencia Artificial (AWS Bedrock, Claude, pgvector) y colaboro en arquitectura cloud bajo metodologías ágiles.",
 };
+
+/** Términos resaltados en el texto del hero. */
+export const profileHighlights: string[] = [
+  "Analista Programador",
+  "Desarrollador Full Stack",
+  "3 años de experiencia",
+  "formación contable",
+  "React",
+  "Next.js",
+  "Python",
+  "FastAPI",
+  "Node.js",
+  "NestJS",
+  "PHP",
+  "Laravel",
+  "Inteligencia Artificial",
+  "AWS Bedrock",
+  "Claude",
+  "pgvector",
+];
 
 export const quickMetrics: { label: string }[] = [
   { label: "+3 años Exp." },
@@ -72,6 +94,30 @@ export const quickMetrics: { label: string }[] = [
 export const LEGACY_LEARNING_CATEGORY = "Legacy/Learning" as const;
 
 export const projects: Project[] = [
+  {
+    id: "matscann",
+    name: "Matscann — Agentes de IA para una plataforma B2B",
+    description:
+      "Agentes de IA en producción con Claude sobre AWS Bedrock y FastAPI, con tool calling y streaming, que asisten a usuarios en consultas sobre catálogos de productos. Incluyen búsqueda web para enriquecer la información y un motor de búsqueda semántica con embeddings y pgvector, integrados con un backend en Laravel/PHP y NestJS sobre PostgreSQL.",
+    stack: [
+      "Python",
+      "FastAPI",
+      "AWS Bedrock",
+      "Claude",
+      "pgvector",
+      "PHP",
+      "Laravel",
+      "NestJS",
+      "PostgreSQL",
+      "Docker",
+      "Redis",
+    ],
+    impact:
+      "Búsqueda semántica sobre catálogos de cientos de miles de productos con respuesta menor a 500ms, y reducción de costos de API mediante estrategias de caché.",
+    isFeatured: true,
+    img: "/img/matscann-concept.jpg",
+    // Sin demo ni repositorio: código privado de la empresa.
+  },
   {
     id: "domintel",
     name: "Domintel — Plataforma de Inteligencia de Dominios con IA",
@@ -184,32 +230,52 @@ export const projects: Project[] = [
 // --- TECH STACK (categorizado) ---
 
 export const techStack: TechStackByCategory = {
-  languages: ["Python", "JavaScript", "TypeScript", "Java", "HTML", "CSS", "SQL"],
-  database: ["PostgreSQL", "PostGIS", "Microsoft SQL Server", "MySQL"],
-  cloudGis: ["AWS", "AWS S3", "Azure", "PostGIS", "Mapbox", "Leaflet", "GeoTIFF", "Titiler"],
+  languages: ["TypeScript", "JavaScript", "Python", "PHP", "Java", "SQL", "HTML", "CSS"],
   frontend: [
     "React",
-    "React Native",
     "Next.js",
-    "Redux",
-    "Vue.js",
-    "Vuex",
-    "Bootstrap",
+    "React Native",
+    "Tailwind CSS",
     "Material Design",
-    "SASS",
-    "Chart.js",
-    "Formik",
-    "Yup",
+    "Redux",
+    "Zustand",
+    "Vue.js",
   ],
+  backend: [
+    "Node.js",
+    "NestJS",
+    "Express",
+    "FastAPI",
+    "Laravel",
+    "Spring Boot",
+    "Prisma",
+    "Jest",
+    "pytest",
+  ],
+  database: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "SQL Server", "pgvector", "PostGIS"],
+  cloudAi: ["AWS", "Docker", "Anthropic Claude", "AWS Bedrock", "OpenAI", "Azure", "Git"],
+  gis: ["Mapbox", "Leaflet", "GeoTIFF", "Titiler"],
 };
 
 // --- EXPERIENCE (historial laboral resumido) ---
 
 export const experience: Experience[] = [
   {
+    company: "Matscann",
+    role: "Desarrollador Full Stack",
+    period: "Abril 2026 — Presente",
+    highlight: [
+      "Desarrollé agentes de IA en producción con Claude en AWS Bedrock (Python, FastAPI), con tool calling, streaming e integración de búsqueda web.",
+      "Implementé búsqueda semántica con embeddings y pgvector sobre catálogos de cientos de miles de productos (respuesta <500ms), optimizando costos de API con estrategias de caché y asegurando calidad con pytest.",
+      "Construí arquitectura backend con NestJS y Laravel/PHP sobre PostgreSQL, colas con Horizon/Redis, almacenamiento en AWS S3 y despliegue con Docker en EC2.",
+      "Optimicé una plataforma multi-cliente basada en microservicios (Node.js, MongoDB), acelerando búsquedas end-to-end mediante caché en Redis, con pruebas en Jest."
+    ],
+    color: "#8b5cf6", // Violet
+  },
+  {
     company: "NVIRO",
     role: "Desarrollador Full Stack",
-    period: "Abril 2025 — Presente",
+    period: "Abril 2025 — Febrero 2026",
     highlight: [
       "Implementé arquitectura GIS avanzada integrando PostgreSQL/PostGIS, mapas interactivos (Mapbox/Leaflet) y visualización satelital (GeoTIFF) mediante Titiler y AWS S3.",
       "Mantenimiento evolutivo de 2 apps móviles (React Native/TypeScript), implementando nuevos features críticos para la captura de flora y fauna en terreno (Android/iOS).",
